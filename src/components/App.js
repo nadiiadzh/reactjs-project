@@ -1,5 +1,6 @@
 import React from 'react'
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import ProductContext from 'contexts/productContext'
 import 'css/style.css'
 import Header from './header'
 import PageHome from 'components/PageHome'
@@ -108,19 +109,21 @@ const App = () => {
 	]
 
 	return(
-		<Router>
-			<Header />
-			<Switch>
-				<Route exact path="/" component={PageHome} />
-				<Route path="/about" component={PageAbout} />
-				<Route path="/contact" component={PageContact} />
-				<Route path="/shop"><PageShop products={productsArr} /></Route>
-				<Route path="/product/:slug"><PageProduct products={productsArr} /></Route>
-				<Route path="*" component={Page404} />
-				
-			</Switch>
-			<Footer />
-	</Router>
+		<ProductContext.Provider value={productsArr}>
+			<Router>
+				<Header />
+				<Switch>
+					<Route exact path="/" component={PageHome} />
+					<Route path="/about" component={PageAbout} />
+					<Route path="/contact" component={PageContact} />
+					<Route path="/shop"  component={PageShop} />
+					<Route path="/product/:slug" component={PageProduct} />
+					<Route path="*" component={Page404} />
+					
+				</Switch>
+				<Footer />
+		</Router>
+	</ProductContext.Provider>
 	)
 }
 

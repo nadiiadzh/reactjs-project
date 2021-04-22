@@ -1,12 +1,14 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Product from 'components/Product'
+import ProductContext from 'contexts/productContext'
 import {useParams} from 'react-router-dom'
 
 
 
-const PageProduct = ({products}) => {
+const PageProduct = () => {
 
   const {slug} = useParams()
+  const products = useContext(ProductContext)
 
   const prod = products.find((prod) => prod.slug === slug) || products[0]// assume it's always the first product
  
