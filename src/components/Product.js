@@ -38,7 +38,7 @@ const Product = ({data}) => {
             
                 {data.sizes.map((ele) =>(  
                     <ol key={ele.id}>
-                        <li><label><input type="radio" name="size" value= {ele.size}/> {ele.size}</label></li>     
+                        <li><label><input type="radio" name="size" value= {ele.sizeDescription}/> {ele.sizeDescription}</label></li>     
                     </ol>
                 ))} 
             </fieldset>

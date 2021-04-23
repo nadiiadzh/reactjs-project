@@ -1,11 +1,13 @@
 import React from 'react'
 import Product from 'components/Product'
+
 import {Pagination} from 'antd'
 import 'antd/dist/antd.css'
 
 const ProductList = ({products}) => {
 
     const allProducts = products.map((prod) => <Product key={prod.id} data={prod} />)
+ 
   
     return (
         <>

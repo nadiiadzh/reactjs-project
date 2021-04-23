@@ -17,7 +17,10 @@ module.exports = {
 			},{
                 test: /\.(png|svg|jpg|jpeg|gif)$/,
                 use: ['file-loader']
-            }
+            }, {
+				test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+				use: ['file-loader']
+			}
 		]
 	},
 	plugins: [
@@ -31,7 +34,8 @@ module.exports = {
 			components: path.resolve(__dirname, 'src/components'),
 			css: path.resolve(__dirname, 'src/css/'),
 			img: path.resolve(__dirname, 'src/img/'),
-			contexts: path.resolve(__dirname, 'src/contexts')
+			contexts: path.resolve(__dirname, 'src/contexts'),
+			hooks: path.resolve(__dirname, 'src/hooks')
 		}
 	},
 	devServer: {
