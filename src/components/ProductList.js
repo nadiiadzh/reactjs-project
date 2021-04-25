@@ -1,12 +1,23 @@
-import React from 'react'
+import React, {useContext,useEffect, useState} from 'react'
 import Product from 'components/Product'
-
 import {Pagination} from 'antd'
 import 'antd/dist/antd.css'
 
 const ProductList = ({products}) => {
 
-    const allProducts = products.map((prod) => <Product key={prod.id} data={prod} />)
+    const [pageNum, setPageNum] = useState(1)
+	const [maxResults, setMaxResults] = useState(5)
+    const searchResult = products
+
+	const onPageChange = (current, size) => {
+		setPageNum(current)
+	}
+	
+  console.log('uru',products)
+    const allProducts = searchResult
+    .slice((pageNum-1)*maxResults, (pageNum-1)*maxResults+maxResults)
+    .map((prod) => <Product key={prod.id} data={prod} />)
+   
  
   
     return (
@@ -16,7 +27,7 @@ const ProductList = ({products}) => {
                 {allProducts}
             </section>
             <nav aria-label="Pagination" className="pagination">
-            <p>1-6 of 23 products found</p>
+            <p>{searchResult.length} products found</p>
             {/*
                 <ol className="pages">
                 <li><a href="#" aria-label="Current Page, Page 1" aria-current="true">1</a></li>
@@ -26,7 +37,7 @@ const ProductList = ({products}) => {
                 <li><a href="#" aria-label="Page 5">5</a></li>
             </ol>
             */}
-            <Pagination defaultCurrent={1} total={50} defaultPageSize={5} />
+            <Pagination defaultCurrent={1} current={pageNum} defaultPageSize={maxResults} total={searchResult.length} onChange={onPageChange} />
         </nav>
     </>
 

@@ -23,25 +23,7 @@ const Filters = ({filters, setFilters}) => {
           size: event.target.value
         })
       }
-/*  const handleSortProducts = (event) => {
-        switch (parseInt(event.target.value)) {
-          case 1:
-            setProductResult(sortProducts(products, byPriceAsc))
-            break;
-          case 2:
-            setProductResult(sortProducts(products, byPriceDesc))
-            break;
-          case 3:
-            setProductResult(sortProducts(products, byRating))
-            break;
-        }
-      }
-*/
 
- /*   console.log(sortProducts(products,byPriceAsc))
-	console.log(sortProducts(products,byPriceDesc))
-	console.log(sortProducts(products,byRating))
- */
     return (
     <>
         {/*<!-- Filtering product form -->*/}
@@ -87,7 +69,7 @@ const Filters = ({filters, setFilters}) => {
                             </ol>
                     </fieldset>
                     <fieldset>
-                        <input type="search" value={filters.query} onChange={(event)=>{
+                        <input type="search" value={filters.query} placeholder="Search..." onChange={(event)=>{
                             setFilters({
                                 ...filters,
                                 query: event.target.value

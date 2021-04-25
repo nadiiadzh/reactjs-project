@@ -2,7 +2,6 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const Product = ({data}) => {
-  //const {id, name, img} = data // data: {id: 0, name: `xyz`, img: `some-url.jpg`}
 
   const productImg = require(`img/${data.imgSrc}`).default
 

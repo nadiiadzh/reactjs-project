@@ -16,29 +16,15 @@ const App = () => {
 
 	const [products, setProducts] = useState([])
 	const [loading, setLoading] = useState(true)
-  
-	useEffect(() => {
-	  const db = firebase.firestore()
-  
-	  db.collection(`Flowers`).get().then(
-		(snapshot) => {
-		  const flowerData = []// an empty array
-		  console.log("Got the datas")
-  
-		  snapshot.docs.forEach(doc => {
-			  const record =doc.data() //Object
-			flowerData.push(record) //Push the object the end of the array
-		  })
-       // update the state (re -render)
-		setProducts(flowerData)
-		setLoading(false)
-	  })
-	},[])
 
-	
-	
+	 useEffect(async () => {
+	 	const productData = await firebase.firestore().collection('products').get()
+		
+	 	setProducts(productData.docs.reduce((products, doc) => [...products, doc.data()], []))
+		 setLoading(false)
 
-	
+	 }, [])	
+
 	return(
 		<>
 		{
@@ -46,7 +32,6 @@ const App = () => {
 			?
 			<h1>Loading...</h1>
 			:
-		
 		<ProductContext.Provider value={products}>
 			<Router>
 				<Header />
@@ -60,8 +45,9 @@ const App = () => {
 					
 				</Switch>
 				<Footer />
-		</Router>
-	</ProductContext.Provider>
+			</Router>
+		</ProductContext.Provider>
+	
 	}
 	</>
 	)
