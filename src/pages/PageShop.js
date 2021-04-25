@@ -1,6 +1,6 @@
 import React, {useContext,useEffect, useState} from 'react'
 import ProductContext from 'contexts/productContext'
-import Filters from './Filters'
+import Filters from '../components/Filters'
 import ProductList from 'components/ProductList'
 
 

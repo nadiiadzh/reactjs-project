@@ -36,7 +36,8 @@ module.exports = {
 			img: path.resolve(__dirname, 'src/img/'),
 			contexts: path.resolve(__dirname, 'src/contexts'),
 			hooks: path.resolve(__dirname, 'src/hooks'),
-			util: path.resolve(__dirname, 'src/util')
+			util: path.resolve(__dirname, 'src/util'),
+			pages: path.resolve(__dirname, 'src/pages')
 		}
 	},
 	devServer: {
